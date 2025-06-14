@@ -9,6 +9,7 @@ const signupRouter=require('../backend/router/signuproute');
 const PORT="5001";
 dotenv.config();
 const app=express();
+app.use(express.static('public'));
 app.use(cors());
 app.use(express.json());
 

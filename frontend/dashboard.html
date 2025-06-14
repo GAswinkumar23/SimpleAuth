@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">Dashboard</div>
+        <div class="nav-menu">
+            <div class="nav-item active">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </div>
+            <div class="nav-item">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </div>
+            <div class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </div>
+            <div class="nav-item">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="header">
+            <h1>Welcome back, <span id="username">John Doe</span></h1>
+            <div class="user-info">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
+                <span id="user-email">john@example.com</span>
+            </div>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="cards">
+            <div class="card">
+                <h3>Total Projects</h3>
+                <p>24</p>
+            </div>
+            <div class="card">
+                <h3>Tasks Completed</h3>
+                <p>128</p>
+            </div>
+            <div class="card">
+                <h3>Pending Requests</h3>
+                <p>5</p>
+            </div>
+        </div>
+
+        <!-- User Profile -->
+        <div class="profile-card">
+            <div class="profile-header">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
+                <div class="profile-details">
+                    <h2 id="fullname">John Doe</h2>
+                    <p>Senior Developer</p>
+                </div>
+            </div>
+            <div class="profile-info">
+                <div class="info-item">
+                    <h4>Email</h4>
+                    <p id="user-email-detail">john@example.com</p>
+                </div>
+                <div class="info-item">
+                    <h4>Phone</h4>
+                    <p>+1 (555) 123-4567</p>
+                </div>
+                <div class="info-item">
+                    <h4>Location</h4>
+                    <p>San Francisco, CA</p>
+                </div>
+                <div class="info-item">
+                    <h4>Member Since</h4>
+                    <p>Jan 2022</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // You would typically fetch this data from your backend after login
+        document.addEventListener('DOMContentLoaded', () => {
+            // Example of populating data from session/localStorage
+            const userData = JSON.parse(localStorage.getItem('user')) || {
+                name: 'John Doe',
+                email: 'john@example.com',
+                role: 'Senior Developer'
+            };
+            
+            document.getElementById('username').textContent = userData.name;
+            document.getElementById('user-email').textContent = userData.email;
+            document.getElementById('fullname').textContent = userData.name;
+            document.getElementById('user-email-detail').textContent = userData.email;
+        });
+    </script>
+</body>
+</html>

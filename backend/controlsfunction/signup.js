@@ -3,7 +3,7 @@ const User = require('../model/userschema');
 
 const signup = async (req, res) => {
     try {
-        const { name, email, password } = req.body;
+        const { name, email, phone,location,category,signupDate, password } = req.body;
 
         const existing = await User.findOne({ email });
         if (existing) {
@@ -11,7 +11,7 @@ const signup = async (req, res) => {
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
-        const newUser = new User({ name, email, password: hashedPassword });
+        const newUser = new User({ name, email, phone,location,category,signupDate, password: hashedPassword });
         await newUser.save();
 
         console.log(`Signup attempt: Name=${name}, Email=${email}`);
@@ -22,6 +22,7 @@ const signup = async (req, res) => {
         console.error("Error in signup:", error);
         res.status(500).json({ error: "Internal Server Error" });
     }
+    return res.status(200)
 };
 
 module.exports = signup;

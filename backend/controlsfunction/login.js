@@ -29,7 +29,7 @@ const login = async (req, res) => {
             { expiresIn: '1h' }
         );
 
-        console.log(`User logged in: ${email}`);
+        console.log(`User logged in: ${email} ${token}`);
 
         return res.status(200).json({
             message: "User login successful",
